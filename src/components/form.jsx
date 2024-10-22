@@ -53,19 +53,31 @@ const EnquiryForm = () => {
   });
 
   const onSubmit = async (data) => {
-    // Reset form, including select fields
-    form.reset({
-      interest: '',
-      name: '',
-      email: '',
-      phone: '',
-      website: '',
-      spent: '',
-      requirements: '',
-    });
-
-    // Log data for debugging (you can handle form submission here)
-    console.log('Form submitted:', data);
+    try {
+      const response = await fetch('/sendmail.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams(data).toString(),
+      });
+      if (response.ok) {
+        form.reset({
+          interest: '',
+          name: '',
+          email: '',
+          phone: '',
+          website: '',
+          spent: '',
+          requirements: '',
+        });
+        alert('Form submitted successfully! We will get back to you soon.');
+      } else {
+        console.error('Error submitting form:', response.status);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   return (

@@ -23,6 +23,7 @@ import {
 } from './ui/select';
 import { Textarea } from '@/components/ui/textarea';
 
+// Zod schema for form validation
 const formSchema = z.object({
   interest: z.string().min(2, 'Interest must be at least 2 characters long'),
   name: z.string().min(2, 'Name must be at least 2 characters long'),
@@ -44,7 +45,7 @@ const EnquiryForm = () => {
       interest: '',
       name: '',
       email: '',
-      Phone: '',
+      phone: '',
       website: '',
       spent: '',
       requirements: '',
@@ -52,35 +53,20 @@ const EnquiryForm = () => {
   });
 
   const onSubmit = async (data) => {
-    try {
-      const response = await fetch('/sendmail.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: new URLSearchParams(data).toString(),
-      });
-      if (response.ok) {
-        form.reset({
-          interest: '',
-          name: '',
-          email: '',
-          Phone: '',
-          website: '',
-          spent: '',
-          requirements: '',
-        });
-        alert('Form submitted successfully! , We will get back to you soon.');
-      } else {
-        console.error('Error submitting form:', response.status);
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  };
+    // Reset form, including select fields
+    form.reset({
+      interest: '',
+      name: '',
+      email: '',
+      phone: '',
+      website: '',
+      spent: '',
+      requirements: '',
+    });
 
-  // Log validation errors to check for potential issues
-  console.log(form.formState.errors);
+    // Log data for debugging (you can handle form submission here)
+    console.log('Form submitted:', data);
+  };
 
   return (
     <div>
@@ -88,6 +74,7 @@ const EnquiryForm = () => {
         <form
           onSubmit={form.handleSubmit(onSubmit)}
           className='flex flex-col gap-4'>
+          {/* Interest Field */}
           <FormField
             control={form.control}
             name='interest'
@@ -95,9 +82,7 @@ const EnquiryForm = () => {
               <FormItem>
                 <FormLabel>Select your interest</FormLabel>
                 <FormControl>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}>
+                  <Select onValueChange={field.onChange} value={field.value}>
                     <SelectTrigger className='w-full'>
                       <SelectValue placeholder='You are interested in...' />
                     </SelectTrigger>
@@ -121,6 +106,8 @@ const EnquiryForm = () => {
               </FormItem>
             )}
           />
+
+          {/* Name Field */}
           <FormField
             control={form.control}
             name='name'
@@ -134,6 +121,8 @@ const EnquiryForm = () => {
               </FormItem>
             )}
           />
+
+          {/* Email Field */}
           <FormField
             control={form.control}
             name='email'
@@ -147,6 +136,8 @@ const EnquiryForm = () => {
               </FormItem>
             )}
           />
+
+          {/* Phone Field */}
           <FormField
             control={form.control}
             name='phone'
@@ -160,6 +151,8 @@ const EnquiryForm = () => {
               </FormItem>
             )}
           />
+
+          {/* Website Field */}
           <FormField
             control={form.control}
             name='website'
@@ -173,6 +166,8 @@ const EnquiryForm = () => {
               </FormItem>
             )}
           />
+
+          {/* Spent Field */}
           <FormField
             control={form.control}
             name='spent'
@@ -180,9 +175,7 @@ const EnquiryForm = () => {
               <FormItem>
                 <FormLabel>Your previous digital spent</FormLabel>
                 <FormControl>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}>
+                  <Select onValueChange={field.onChange} value={field.value}>
                     <SelectTrigger className='w-full'>
                       <SelectValue placeholder='Select your previous spent' />
                     </SelectTrigger>
@@ -209,6 +202,8 @@ const EnquiryForm = () => {
               </FormItem>
             )}
           />
+
+          {/* Requirements Field */}
           <FormField
             control={form.control}
             name='requirements'
@@ -216,17 +211,15 @@ const EnquiryForm = () => {
               <FormItem>
                 <FormLabel>Enter your requirements</FormLabel>
                 <FormControl>
-                  <Textarea
-                    {...field}
-                    type='requirements'
-                    placeholder='Enter your requirements'
-                  />
+                  <Textarea {...field} placeholder='Enter your requirements' />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-          <Button variant='outline' type='submit' size='lg' className=''>
+
+          {/* Submit Button */}
+          <Button variant='outline' type='submit' size='lg'>
             Submit
           </Button>
         </form>

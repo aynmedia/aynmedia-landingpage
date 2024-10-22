@@ -53,7 +53,6 @@ const EnquiryForm = () => {
 
   const onSubmit = async (data) => {
     try {
-      console.log(data);
       const response = await fetch('/sendmail.php', {
         method: 'POST',
         headers: {
@@ -62,8 +61,15 @@ const EnquiryForm = () => {
         body: new URLSearchParams(data).toString(),
       });
       if (response.ok) {
-        console.log(response);
-        console.log('Form submitted successfully!');
+        form.reset({
+          interest: '',
+          name: '',
+          email: '',
+          Phone: '',
+          website: '',
+          spent: '',
+          requirements: '',
+        });
         alert('Form submitted successfully! , We will get back to you soon.');
       } else {
         console.error('Error submitting form:', response.status);

@@ -16,7 +16,7 @@ const Navbar = () => {
         </p> */}
         <div className="text-sm md:text-lg hover:underline font-bold">
           <Link href="mailto:business.aynmedia@gmail.com">
-            business.aynmedia@gmail.com
+            info@ayntech.in
           </Link>
         </div>
       </div>

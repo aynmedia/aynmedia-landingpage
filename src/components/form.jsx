@@ -81,34 +81,35 @@ const EnquiryForm = () => {
   };
 
   return (
-    <div>
+    <div id="contact-form">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className='flex flex-col gap-4'>
+          className="flex flex-col gap-4"
+        >
           {/* Interest Field */}
           <FormField
             control={form.control}
-            name='interest'
+            name="interest"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Select your interest</FormLabel>
                 <FormControl>
                   <Select onValueChange={field.onChange} value={field.value}>
-                    <SelectTrigger className='w-full'>
-                      <SelectValue placeholder='You are interested in...' />
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="You are interested in..." />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value='Social Media Marketing'>
+                      <SelectItem value="Social Media Marketing">
                         Social Media Marketing
                       </SelectItem>
-                      <SelectItem value='SEO'>SEO</SelectItem>
-                      <SelectItem value='Paid ads'>Paid ads</SelectItem>
-                      <SelectItem value='New Website'>New Website</SelectItem>
-                      <SelectItem value='Website Revamp'>
+                      <SelectItem value="SEO">SEO</SelectItem>
+                      <SelectItem value="Paid ads">Paid ads</SelectItem>
+                      <SelectItem value="New Website">New Website</SelectItem>
+                      <SelectItem value="Website Revamp">
                         Website Revamp
                       </SelectItem>
-                      <SelectItem value='Graphic Designing'>
+                      <SelectItem value="Graphic Designing">
                         Graphic Designing
                       </SelectItem>
                     </SelectContent>
@@ -122,12 +123,12 @@ const EnquiryForm = () => {
           {/* Name Field */}
           <FormField
             control={form.control}
-            name='name'
+            name="name"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Enter your name</FormLabel>
                 <FormControl>
-                  <Input {...field} type='text' placeholder='John Doe' />
+                  <Input {...field} type="text" placeholder="John Doe" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -137,12 +138,12 @@ const EnquiryForm = () => {
           {/* Email Field */}
           <FormField
             control={form.control}
-            name='email'
+            name="email"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Enter your email address</FormLabel>
                 <FormControl>
-                  <Input {...field} type='text' placeholder='xxxx@xxxx.com' />
+                  <Input {...field} type="text" placeholder="xxxx@xxxx.com" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -152,12 +153,12 @@ const EnquiryForm = () => {
           {/* Phone Field */}
           <FormField
             control={form.control}
-            name='phone'
+            name="phone"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Enter your phone number</FormLabel>
                 <FormControl>
-                  <Input {...field} type='text' placeholder='+91xxxxxxxxxx' />
+                  <Input {...field} type="text" placeholder="+91xxxxxxxxxx" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -167,12 +168,12 @@ const EnquiryForm = () => {
           {/* Website Field */}
           <FormField
             control={form.control}
-            name='website'
+            name="website"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Enter your website URL</FormLabel>
                 <FormControl>
-                  <Input {...field} type='text' placeholder='www.example.com' />
+                  <Input {...field} type="text" placeholder="www.example.com" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -182,29 +183,29 @@ const EnquiryForm = () => {
           {/* Spent Field */}
           <FormField
             control={form.control}
-            name='spent'
+            name="spent"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Your previous digital spent</FormLabel>
                 <FormControl>
                   <Select onValueChange={field.onChange} value={field.value}>
-                    <SelectTrigger className='w-full'>
-                      <SelectValue placeholder='Select your previous spent' />
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Select your previous spent" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value='₹ 25,000 to ₹ 35,000'>
+                      <SelectItem value="₹ 25,000 to ₹ 35,000">
                         ₹ 25,000 to ₹ 35,000
                       </SelectItem>
-                      <SelectItem value='₹ 35,000 to ₹ 50,000'>
+                      <SelectItem value="₹ 35,000 to ₹ 50,000">
                         ₹ 35,000 to ₹ 50,000
                       </SelectItem>
-                      <SelectItem value='₹ 50,000 to ₹ 75,000'>
+                      <SelectItem value="₹ 50,000 to ₹ 75,000">
                         ₹ 50,000 to ₹ 75,000
                       </SelectItem>
-                      <SelectItem value='₹ 75,000 and ₹ 1 Lakh'>
+                      <SelectItem value="₹ 75,000 and ₹ 1 Lakh">
                         ₹ 75,000 & ₹ 1 Lakh
                       </SelectItem>
-                      <SelectItem value='₹ 1 Lakh and above'>
+                      <SelectItem value="₹ 1 Lakh and above">
                         ₹ 1 Lakh & above
                       </SelectItem>
                     </SelectContent>
@@ -218,12 +219,12 @@ const EnquiryForm = () => {
           {/* Requirements Field */}
           <FormField
             control={form.control}
-            name='requirements'
+            name="requirements"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Enter your requirements</FormLabel>
                 <FormControl>
-                  <Textarea {...field} placeholder='Enter your requirements' />
+                  <Textarea {...field} placeholder="Enter your requirements" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -231,7 +232,7 @@ const EnquiryForm = () => {
           />
 
           {/* Submit Button */}
-          <Button variant='outline' type='submit' size='lg'>
+          <Button variant="outline" type="submit" size="lg">
             Submit
           </Button>
         </form>

@@ -14,7 +14,7 @@ const Navbar = () => {
         {/* <p className='font-bold'>
           Innovating marketing to drive business success.
         </p> */}
-        <div className="text-sm md:text-lg hover:underline font-bold">
+        <div className="text-sm md:text-lg  font-bold">
           <Link href="mailto:business.aynmedia@gmail.com">
             info@ayntech.in
           </Link>
